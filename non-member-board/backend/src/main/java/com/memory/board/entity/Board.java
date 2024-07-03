@@ -45,14 +45,15 @@ public class Board {
 
     //== dto 생성 메서드 ==//
     public BoardDTO toDTO() {
-        BoardDTO dto = new BoardDTO();
-        dto.setNickname(nickname);
-        dto.setPassword(password);
-        dto.setTitle(title);
-        dto.setContent(content);
-        dto.setCreatedDate(createdDate);
-        dto.setModifiedDate(modifiedDate);
-        dto.setDelYn(delYn);
+        BoardDTO dto = new BoardDTO(
+                nickname,
+                password,
+                title,
+                content,
+                createdDate,
+                modifiedDate,
+                delYn
+        );
 
         return dto;
     }

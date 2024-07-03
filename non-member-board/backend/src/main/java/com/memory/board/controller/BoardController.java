@@ -30,18 +30,10 @@ public class BoardController {
     private final BoardService boardService;
 
     @GetMapping("/board")
-    public ResponseEntity<Page<BoardDTO>> getBoardList(@RequestBody BoardSearchDTO searchDTO,
-                                                       @PageableDefault(size = 2, page = 0) Pageable pageable ) {
+    public ResponseEntity<Page<BoardDTO>> getBoardList(@RequestBody(required = false) BoardSearchDTO searchDTO,
+                                                       @PageableDefault(size = 5, page = 0) Pageable pageable ) {
 
-        log.info("searchDTO.option={}", searchDTO.getOption());
-        log.info("searchDTO.keyword={}", searchDTO.getKeyword());
-
-//        Pageable pageable = PageRequest.of(0, 2);
-
-        Page<Board> boardList = boardService.selectBoardList(pageable);
-
-        //entity to dto
-        Page<BoardDTO> dtoList = boardList.map(Board::toDTO);
+        Page<BoardDTO> dtoList = boardService.selectBoardList(pageable, searchDTO);
 
         return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }

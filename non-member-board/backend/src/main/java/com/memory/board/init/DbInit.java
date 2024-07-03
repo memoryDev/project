@@ -33,6 +33,24 @@ public class DbInit {
         BoardDTO dtoE = new BoardDTO("닉네임E", "passwordE", "제목E", "내용E", LocalDateTime.now(), null, DeleteStatus.N);
         Thread.sleep(10);
         BoardDTO dtoF = new BoardDTO("닉네임F", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoG = new BoardDTO("닉네임G", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoH = new BoardDTO("닉네임H", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoI = new BoardDTO("닉네임I", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoJ = new BoardDTO("닉네임J", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoK = new BoardDTO("닉네임K", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoL = new BoardDTO("닉네임L", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoM = new BoardDTO("닉네임M", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoN = new BoardDTO("닉네임N", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
+        Thread.sleep(10);
+        BoardDTO dtoO = new BoardDTO("닉네임O", "passwordF", "제목F", "내용F", LocalDateTime.now(), null, DeleteStatus.N);
 
         boardRepository.save(dtoA.toEntity());
         boardRepository.save(dtoB.toEntity());
@@ -40,5 +58,14 @@ public class DbInit {
         boardRepository.save(dtoD.toEntity());
         boardRepository.save(dtoE.toEntity());
         boardRepository.save(dtoF.toEntity());
+        boardRepository.save(dtoG.toEntity());
+        boardRepository.save(dtoH.toEntity());
+        boardRepository.save(dtoI.toEntity());
+        boardRepository.save(dtoJ.toEntity());
+        boardRepository.save(dtoK.toEntity());
+        boardRepository.save(dtoL.toEntity());
+        boardRepository.save(dtoM.toEntity());
+        boardRepository.save(dtoN.toEntity());
+        boardRepository.save(dtoO.toEntity());
     }
 }

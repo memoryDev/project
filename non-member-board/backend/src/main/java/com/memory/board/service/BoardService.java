@@ -1,5 +1,7 @@
 package com.memory.board.service;
 
+import com.memory.board.dto.BoardDTO;
+import com.memory.board.dto.BoardSearchDTO;
 import com.memory.board.entity.Board;
 import com.memory.board.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +17,8 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    public Page<Board> selectBoardList(Pageable pageable) {
-        return boardRepository.findAll(pageable);
+    public Page<BoardDTO> selectBoardList(Pageable pageable, BoardSearchDTO searchDTO) {
+        return boardRepository.findBoardList(searchDTO, pageable);
     }
 
 }

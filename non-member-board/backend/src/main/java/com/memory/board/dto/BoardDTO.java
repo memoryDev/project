@@ -2,16 +2,15 @@ package com.memory.board.dto;
 
 import com.memory.board.entity.Board;
 import com.memory.board.entity.enums.DeleteStatus;
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.*;
-import org.hibernate.sql.Delete;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardDTO {
 
     private String nickname;            /* 작성자 닉네임 */
@@ -22,6 +21,15 @@ public class BoardDTO {
     private LocalDateTime modifiedDate; /* 게시글 수정일 */
     private DeleteStatus delYn;         /* 게시글 삭제여부 */
 
+    public BoardDTO(String nickname, String password, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate, DeleteStatus delYn) {
+        this.nickname = nickname;
+        this.password = password;
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.delYn = delYn;
+    }
 
     //== entity 생성 메서드 ==//
     public Board toEntity() {
