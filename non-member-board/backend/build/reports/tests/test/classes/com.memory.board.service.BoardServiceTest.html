@@ -29,7 +29,7 @@
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.010s</div>
+<div class="counter">0.425s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">0%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,35 +61,16 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
+<a href="#tab1">Standard output</a>
 </li>
 <li>
-<a href="#tab2">Standard output</a>
+<a href="#tab2">Standard error</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="selectBoardTest()"></a>
-<h3 class="failures">게시판 목록 조회</h3>
-<span class="code">
-<pre>org.opentest4j.AssertionFailedError: 
-expected: 3
- but was: 9
-	at java.base@22.0.1/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base@22.0.1/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at app//com.memory.board.service.BoardServiceTest.selectBoardTest(BoardServiceTest.java:61)
-	at java.base@22.0.1/java.lang.reflect.Method.invoke(Method.java:580)
-	at java.base@22.0.1/java.util.ArrayList.forEach(ArrayList.java:1597)
-	at java.base@22.0.1/java.util.ArrayList.forEach(ArrayList.java:1597)
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -101,33 +82,156 @@ expected: 3
 </tr>
 </thead>
 <tr>
-<td class="failures">게시판 목록 조회</td>
-<td class="failures">selectBoardTest()</td>
-<td class="failures">0.010s</td>
-<td class="failures">failed</td>
+<td class="success">게시판 목록 조회</td>
+<td class="success">selectBoardTest()</td>
+<td class="success">0.425s</td>
+<td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>?[2m2024-07-03T10:29:22.031+09:00?[0;39m ?[32m INFO?[0;39m ?[35m97014?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mt.c.s.AnnotationConfigContextLoaderUtils?[0;39m ?[2m:?[0;39m Could not detect default configuration classes for test class [com.memory.board.service.BoardServiceTest]: BoardServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-?[2m2024-07-03T10:29:22.037+09:00?[0;39m ?[32m INFO?[0;39m ?[35m97014?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36m.b.t.c.SpringBootTestContextBootstrapper?[0;39m ?[2m:?[0;39m Found @SpringBootConfiguration com.memory.board.NomMemberBoardApplication for test class com.memory.board.service.BoardServiceTest
-?[2m2024-07-03T10:29:22.041+09:00?[0;39m ?[32m INFO?[0;39m ?[35m97014?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719970162041 | took 0ms | statement | connection 10| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+<pre>14:16:06.306 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.memory.board.service.BoardServiceTest]: BoardServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+14:16:06.366 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.memory.board.NomMemberBoardApplication for test class com.memory.board.service.BoardServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+?[32m :: Spring Boot :: ?[39m              ?[2m (v3.3.1)?[0;39m
+
+?[2m2024-07-03T14:16:06.628+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.memory.board.service.BoardServiceTest ?[0;39m ?[2m:?[0;39m Starting BoardServiceTest using Java 22.0.1 with PID 9289 (started by hj in /Users/hj/DEV/project/non-member-board/backend)
+?[2m2024-07-03T14:16:06.628+09:00?[0;39m ?[32mDEBUG?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.memory.board.service.BoardServiceTest ?[0;39m ?[2m:?[0;39m Running with Spring Boot v3.3.1, Spring v6.1.10
+?[2m2024-07-03T14:16:06.629+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.memory.board.service.BoardServiceTest ?[0;39m ?[2m:?[0;39m No active profile set, falling back to 1 default profile: &quot;default&quot;
+?[2m2024-07-03T14:16:06.971+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36m.s.d.r.c.RepositoryConfigurationDelegate?[0;39m ?[2m:?[0;39m Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+?[2m2024-07-03T14:16:07.007+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36m.s.d.r.c.RepositoryConfigurationDelegate?[0;39m ?[2m:?[0;39m Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interface.
+?[2m2024-07-03T14:16:07.289+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.hibernate.jpa.internal.util.LogHelper ?[0;39m ?[2m:?[0;39m HHH000204: Processing PersistenceUnitInfo [name: default]
+?[2m2024-07-03T14:16:07.322+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36morg.hibernate.Version                   ?[0;39m ?[2m:?[0;39m HHH000412: Hibernate ORM core version 6.5.2.Final
+?[2m2024-07-03T14:16:07.336+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.h.c.internal.RegionFactoryInitiator   ?[0;39m ?[2m:?[0;39m HHH000026: Second-level cache disabled
+?[2m2024-07-03T14:16:07.483+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.s.o.j.p.SpringPersistenceUnitInfo     ?[0;39m ?[2m:?[0;39m No LoadTimeWeaver setup: ignoring JPA class transformer
+?[2m2024-07-03T14:16:07.496+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mcom.zaxxer.hikari.HikariDataSource      ?[0;39m ?[2m:?[0;39m HikariPool-1 - Starting...
+?[2m2024-07-03T14:16:07.536+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mcom.zaxxer.hikari.pool.HikariPool       ?[0;39m ?[2m:?[0;39m HikariPool-1 - Added connection org.mariadb.jdbc.Connection@7b79ff1c
+?[2m2024-07-03T14:16:07.537+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mcom.zaxxer.hikari.HikariDataSource      ?[0;39m ?[2m:?[0;39m HikariPool-1 - Start completed.
+?[2m2024-07-03T14:16:07.936+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mo.h.e.t.j.p.i.JtaPlatformInitiator      ?[0;39m ?[2m:?[0;39m HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+?[2m2024-07-03T14:16:07.964+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983767964 | took 20ms | statement | connection 1| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+drop table if exists board
+drop table if exists board;
+?[2m2024-07-03T14:16:07.998+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983767998 | took 30ms | statement | connection 2| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+create table board (board_id bigint not null auto_increment, created_date datetime(6) not null, modified_date datetime(6), nickname varchar(255) not null, password varchar(255) not null, title varchar(255) not null, content tinytext not null, del_yn enum ('N','Y') default 'N' not null, primary key (board_id)) engine=InnoDB
+create table board (board_id bigint not null auto_increment, created_date datetime(6) not null, modified_date datetime(6), nickname varchar(255) not null, password varchar(255) not null, title varchar(255) not null, content tinytext not null, del_yn enum ('N','Y') default 'N' not null, primary key (board_id)) engine=InnoDB;
+?[2m2024-07-03T14:16:08.001+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mj.LocalContainerEntityManagerFactoryBean?[0;39m ?[2m:?[0;39m Initialized JPA EntityManagerFactory for persistence unit 'default'
+?[2m2024-07-03T14:16:08.330+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768330 | took 1ms | statement | connection 3| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
 insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
-insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@cec1ce2','2024-07-03T10:29:22.040+0900','N',NULL,'작성자A','123456','게시글 제목A') returning board_id;
-?[2m2024-07-03T10:29:22.042+09:00?[0;39m ?[32m INFO?[0;39m ?[35m97014?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719970162042 | took 0ms | statement | connection 10| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
-insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
-insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@6b72c62','2024-07-03T10:29:22.040+0900','N',NULL,'작성자B','123456','게시글 제목B') returning board_id;
-?[2m2024-07-03T10:29:22.043+09:00?[0;39m ?[32m INFO?[0;39m ?[35m97014?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719970162043 | took 0ms | statement | connection 10| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
-insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
-insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@2fad50f2','2024-07-03T10:29:22.040+0900','N',NULL,'작성자C','123456','게시글 제목C') returning board_id;
-?[2m2024-07-03T10:29:22.044+09:00?[0;39m ?[32m INFO?[0;39m ?[35m97014?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719970162044 | took 0ms | statement | connection 10| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
-select b1_0.board_id,b1_0.content,b1_0.created_date,b1_0.del_yn,b1_0.modified_date,b1_0.nickname,b1_0.password,b1_0.title from board b1_0
-select b1_0.board_id,b1_0.content,b1_0.created_date,b1_0.del_yn,b1_0.modified_date,b1_0.nickname,b1_0.password,b1_0.title from board b1_0;
-?[2m2024-07-03T10:29:22.048+09:00?[0;39m ?[32m INFO?[0;39m ?[35m97014?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719970162048 | took 1ms | rollback | connection 10| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@68ea1eb5','2024-07-03T14:16:08.135+0900','N',NULL,'닉네임A','passwordA','제목A') returning board_id;
+?[2m2024-07-03T14:16:08.347+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768346 | took 0ms | commit | connection 3| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
 
 ;
+?[2m2024-07-03T14:16:08.353+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768353 | took 0ms | statement | connection 4| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@474deb4c','2024-07-03T14:16:08.147+0900','N',NULL,'닉네임B','passwordB','제목B') returning board_id;
+?[2m2024-07-03T14:16:08.354+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768354 | took 0ms | commit | connection 4| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.357+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768357 | took 0ms | statement | connection 5| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@9771c71','2024-07-03T14:16:08.159+0900','N',NULL,'닉네임C','passwordC','제목C') returning board_id;
+?[2m2024-07-03T14:16:08.357+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768357 | took 0ms | commit | connection 5| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.360+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768360 | took 0ms | statement | connection 6| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@5ce0f50a','2024-07-03T14:16:08.172+0900','N',NULL,'닉네임D','passwordD','제목D') returning board_id;
+?[2m2024-07-03T14:16:08.361+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768361 | took 0ms | commit | connection 6| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.362+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768362 | took 0ms | statement | connection 7| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@7a023e34','2024-07-03T14:16:08.184+0900','N',NULL,'닉네임E','passwordE','제목E') returning board_id;
+?[2m2024-07-03T14:16:08.363+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768363 | took 0ms | commit | connection 7| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.365+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768365 | took 0ms | statement | connection 8| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@2165d4ab','2024-07-03T14:16:08.197+0900','N',NULL,'닉네임F','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.365+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768365 | took 0ms | commit | connection 8| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.368+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768368 | took 0ms | statement | connection 9| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@429dde4d','2024-07-03T14:16:08.209+0900','N',NULL,'닉네임G','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.368+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768368 | took 0ms | commit | connection 9| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.370+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768370 | took 0ms | statement | connection 10| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@2b625e82','2024-07-03T14:16:08.222+0900','N',NULL,'닉네임H','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.370+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768370 | took 0ms | commit | connection 10| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.372+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768372 | took 0ms | statement | connection 11| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@6a0aa5e2','2024-07-03T14:16:08.233+0900','N',NULL,'닉네임I','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.373+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768373 | took 0ms | commit | connection 11| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.374+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768374 | took 0ms | statement | connection 12| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@64745270','2024-07-03T14:16:08.246+0900','N',NULL,'닉네임J','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.375+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768375 | took 0ms | commit | connection 12| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.378+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768378 | took 0ms | statement | connection 13| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@5e8a678a','2024-07-03T14:16:08.257+0900','N',NULL,'닉네임K','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.379+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768379 | took 0ms | commit | connection 13| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.381+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768381 | took 0ms | statement | connection 14| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@260ccf0','2024-07-03T14:16:08.270+0900','N',NULL,'닉네임L','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.381+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768381 | took 0ms | commit | connection 14| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.383+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768383 | took 0ms | statement | connection 15| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@67521a79','2024-07-03T14:16:08.282+0900','N',NULL,'닉네임M','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.384+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768384 | took 0ms | commit | connection 15| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.385+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768385 | took 0ms | statement | connection 16| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@bb1b872','2024-07-03T14:16:08.294+0900','N',NULL,'닉네임N','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.386+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768386 | took 0ms | commit | connection 16| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.388+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768388 | took 0ms | statement | connection 17| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values (?,?,?,?,?,?,?) returning board_id
+insert into board (content,created_date,del_yn,modified_date,nickname,password,title) values ('java.io.StringReader@2319c1e0','2024-07-03T14:16:08.304+0900','N',NULL,'닉네임O','passwordF','제목F') returning board_id;
+?[2m2024-07-03T14:16:08.388+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983768388 | took 0ms | commit | connection 17| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+?[2m2024-07-03T14:16:08.458+09:00?[0;39m ?[33m WARN?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mJpaBaseConfiguration$JpaWebConfiguration?[0;39m ?[2m:?[0;39m spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+?[2m2024-07-03T14:16:08.631+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mc.memory.board.service.BoardServiceTest ?[0;39m ?[2m:?[0;39m Started BoardServiceTest in 2.161 seconds (process running for 2.886)
+?[2m2024-07-03T14:16:09.028+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983769028 | took 0ms | statement | connection 18| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+select b1_0.board_id,b1_0.content,b1_0.created_date,b1_0.del_yn,b1_0.modified_date,b1_0.nickname,b1_0.password,b1_0.title from board b1_0
+select b1_0.board_id,b1_0.content,b1_0.created_date,b1_0.del_yn,b1_0.modified_date,b1_0.nickname,b1_0.password,b1_0.title from board b1_0;
+?[2m2024-07-03T14:16:09.066+09:00?[0;39m ?[32m INFO?[0;39m ?[35m9289?[0;39m ?[2m---?[0;39m ?[2m[    Test worker]?[0;39m ?[2m?[0;39m?[36mp6spy                                   ?[0;39m ?[2m:?[0;39m #1719983769066 | took 0ms | rollback | connection 18| url jdbc:mariadb://localhost/non_member_board?user=root&amp;password=***
+
+;
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>WARNING: A Java agent has been loaded dynamically (/Users/hj/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.17/e3c251a39dc90badaf71c83427ba46840f219d8d/byte-buddy-agent-1.14.17.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
 </pre>
 </span>
 </div>
@@ -139,7 +243,7 @@ select b1_0.board_id,b1_0.content,b1_0.created_date,b1_0.del_yn,b1_0.modified_da
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.8</a> at 2024. 7. 3. 오전 10:29:22</p>
+<a href="http://www.gradle.org">Gradle 8.8</a> at 2024. 7. 3. 오후 2:16:09</p>
 </div>
 </div>
 </body>
