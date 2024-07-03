@@ -9,10 +9,10 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardDTO {
 
+    private Long id;
     private String nickname;            /* 작성자 닉네임 */
     private String password;            /* 게시글 비밀번호 */
     private String title;               /* 게시글 제목 */
@@ -20,6 +20,17 @@ public class BoardDTO {
     private LocalDateTime createdDate;  /* 게시글 작성일 */
     private LocalDateTime modifiedDate; /* 게시글 수정일 */
     private DeleteStatus delYn;         /* 게시글 삭제여부 */
+
+    public BoardDTO(Long id, String nickname, String password, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate, DeleteStatus delYn) {
+        this.id = id;
+        this.nickname = nickname;
+        this.password = password;
+        this.title = title;
+        this.content = content;
+        this.createdDate = createdDate;
+        this.modifiedDate = modifiedDate;
+        this.delYn = delYn;
+    }
 
     public BoardDTO(String nickname, String password, String title, String content, LocalDateTime createdDate, LocalDateTime modifiedDate, DeleteStatus delYn) {
         this.nickname = nickname;

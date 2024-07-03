@@ -21,4 +21,8 @@ public class BoardService {
         return boardRepository.findBoardList(searchDTO, pageable);
     }
 
+    public BoardDTO boardDetail(Long boardId) {
+        return boardRepository.findBoardByBoardIdAndDelYn(boardId);
+    }
+
 }

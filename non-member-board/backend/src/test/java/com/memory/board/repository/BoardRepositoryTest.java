@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -47,10 +48,23 @@ class BoardRepositoryTest {
         Board findBoardB = boardRepository.findById(2L).orElse(new Board());
         Board findBoardC = boardRepository.findById(3L).orElse(new Board());
 
-        Assertions.assertThat(boardList.size()).isEqualTo(15);
-        Assertions.assertThat(boardList).contains(findBoardA, findBoardB, findBoardC);
+        assertThat(boardList.size()).isEqualTo(15);
+        assertThat(boardList).contains(findBoardA, findBoardB, findBoardC);
 
         log.debug("{}", "===== 게시판 목록 조회 end =====");
+    }
+
+    @Test
+    @DisplayName("게시판 상세 페이지 조회")
+    void getBoardTest() throws Exception {
+
+        BoardDTO dto = boardRepository.findBoardByBoardIdAndDelYn(1L);
+//        log.info("board.id={}", dto.getId());
+
+        assertThat(dto.getId()).isEqualTo(1L);
+        assertThat(dto.getContent()).isEqualTo("내용A");
+        assertThat(dto.getNickname()).isEqualTo("닉네임A");
+        assertThat(dto.getDelYn()).isEqualTo(DeleteStatus.N);
     }
 
 }

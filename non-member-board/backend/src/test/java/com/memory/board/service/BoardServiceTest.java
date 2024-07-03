@@ -1,6 +1,7 @@
 package com.memory.board.service;
 
 import com.memory.board.dto.BoardDTO;
+import com.memory.board.dto.BoardSearchDTO;
 import com.memory.board.entity.Board;
 import com.memory.board.entity.enums.DeleteStatus;
 import com.memory.board.repository.BoardRepository;
@@ -12,11 +13,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -36,19 +41,55 @@ class BoardServiceTest {
     }
 
     @Test
-    @DisplayName("게시판 목록 조회")
+    @DisplayName("게시판 목록 조회 - 검색조건X")
     void selectBoardTest() {
 
+        Pageable pageable = PageRequest.of(0, 5);
+
         //then
-//        List<Board> boardList = boardService.selectBoardList();
+        Page<BoardDTO> page = boardService.selectBoardList(pageable, null);
+
+        List<BoardDTO> boardList = page.getContent();
 
         //given
-//        Board findBoardA = boardRepository.findById(1L).orElse(new Board());
-//        Board findBoardB = boardRepository.findById(2L).orElse(new Board());
-//        Board findBoardC = boardRepository.findById(3L).orElse(new Board());
+        BoardDTO findBoardA = boardRepository.findById(1L).orElse(new Board()).toDTO();
+        BoardDTO findBoardB = boardRepository.findById(2L).orElse(new Board()).toDTO();
+        BoardDTO findBoardC = boardRepository.findById(3L).orElse(new Board()).toDTO();
 
-//        Assertions.assertThat(boardList.size()).isEqualTo(15);
-//        Assertions.assertThat(boardList).contains(findBoardA, findBoardB, findBoardC);
+        assertThat(boardList)
+                .extracting("nickname")
+                .containsExactly("닉네임A", "닉네임B", "닉네임C", "닉네임D", "닉네임E");
+    }
+
+    @Test
+    @DisplayName("게시판 목록 조회 - 검색조건O")
+    void selectBoardSearchTest() {
+
+        Pageable pageable = PageRequest.of(0, 5);
+        BoardSearchDTO boardSearchDTO = new BoardSearchDTO("nickname", "A");
+
+        //then
+        Page<BoardDTO> page = boardService.selectBoardList(pageable, boardSearchDTO);
+
+        List<BoardDTO> boardList = page.getContent();
+
+        assertThat(boardList)
+                .extracting("nickname")
+                .containsExactly("닉네임A");
+    }
+
+    @Test
+    @DisplayName("게시판 상세 조회")
+    void boardDetailTest() {
+        Long boardId = 1L;
+
+        BoardDTO dto = boardService.boardDetail(boardId);
+        assertThat(dto.getNickname()).isEqualTo("닉네임A");
+        assertThat(dto.getDelYn()).isEqualTo(DeleteStatus.N);
+        assertThat(dto.getContent()).isEqualTo("내용A");
+
+
+
     }
 
 }

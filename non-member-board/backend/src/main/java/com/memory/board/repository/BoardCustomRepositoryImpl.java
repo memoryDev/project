@@ -4,6 +4,7 @@ import com.memory.board.dto.BoardDTO;
 import com.memory.board.dto.BoardSearchDTO;
 import com.memory.board.entity.Board;
 import com.memory.board.entity.QBoard;
+import com.memory.board.entity.enums.DeleteStatus;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -32,10 +33,9 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository{
     @Override
     public Page<BoardDTO> findBoardList(BoardSearchDTO searchDTO, Pageable pageable) {
 
-        QBoard board = QBoard.board;
-
         List<BoardDTO> content = queryFactory
                 .select(Projections.constructor(BoardDTO.class,
+                        board.id.as("board_id"),
                         board.nickname,
                         board.password,
                         board.title,
@@ -54,6 +54,30 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository{
                 .fetch();
 
         return new PageImpl<>(content, pageable, content.size());
+    }
+
+    @Override
+    public BoardDTO findBoardByBoardIdAndDelYn(Long id) {
+
+        BoardDTO dto = queryFactory.select(
+                        Projections.constructor(BoardDTO.class,
+                                board.id,
+                                board.nickname,
+                                board.password,
+                                board.title,
+                                board.content,
+                                board.createdDate,
+                                board.modifiedDate,
+                                board.delYn)
+
+                )
+                .from(board)
+                .where(board.delYn.eq(DeleteStatus.N)
+                        .and(board.id.eq(id)))
+                .limit(1)
+                .fetchOne();
+
+        return dto;
     }
 
     private BooleanExpression containsNickname(BoardSearchDTO searchDTO) {
