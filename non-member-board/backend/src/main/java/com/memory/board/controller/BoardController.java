@@ -33,9 +33,6 @@ public class BoardController {
     public ResponseEntity<Page<BoardDTO>> getBoardList(@RequestBody(required = false) BoardSearchDTO searchDTO,
                                                        @PageableDefault(size = 5, page = 0) Pageable pageable ) {
 
-        System.out.println("===== pageable =====");
-        System.out.println(pageable);
-
         Page<BoardDTO> dtoList = boardService.selectBoardList(pageable, searchDTO);
 
         return new ResponseEntity<>(dtoList, HttpStatus.OK);
