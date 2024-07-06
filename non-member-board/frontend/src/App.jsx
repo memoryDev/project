@@ -1,7 +1,16 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BoardList from "./pages/board/BoardList";
+
 function App() {
   return (
     <>
-      <h1>App.jsx</h1>
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/board/list" element={<BoardList />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   );
 }
