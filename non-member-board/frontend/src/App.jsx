@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BoardList from "./pages/board/BoardList";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
