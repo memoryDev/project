@@ -1,0 +1,29 @@
+.pagination {
+  display: flex !important;
+  justify-content: center;
+}
+
+.pagination li {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+.pagination li a {
+  display: block;
+  border: 1px solid #000;
+  margin: 0 3px;
+}
+
+.pagination li.active a {
+  background: #000;
+  font-weight: bold;
+  color: #fff;
+}
+
+.pagination li:hover a {
+  cursor: pointer;
+  background: #000;
+  font-weight: bold;
+  color: #fff !important;
+}

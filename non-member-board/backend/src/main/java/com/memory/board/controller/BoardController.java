@@ -23,9 +23,11 @@ public class BoardController {
 
     private final BoardService boardService;
 
-    @GetMapping("/board")
+    @PostMapping("/board")
     public ResponseEntity<Page<BoardDTO>> getBoardList(@RequestBody(required = false) BoardSearchDTO searchDTO,
-                                                       @PageableDefault(size = 5, page = 0) Pageable pageable ) {
+                                                       @PageableDefault(size = 10) Pageable pageable ) {
+
+        System.out.println(searchDTO);
 
         Page<BoardDTO> dtoList = boardService.selectBoardList(pageable, searchDTO);
 

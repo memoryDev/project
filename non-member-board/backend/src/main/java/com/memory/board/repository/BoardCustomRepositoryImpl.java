@@ -53,7 +53,16 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository{
                 .limit(pageable.getPageSize()) //페이지 사이즈
                 .fetch();
 
-        return new PageImpl<>(content, pageable, content.size());
+        int totalSize = queryFactory
+                .selectFrom(board)
+                .where(
+                        containsNickname(searchDTO),
+                        containsTitle(searchDTO)
+                )
+                .fetch()
+                .size();
+
+        return new PageImpl<>(content, pageable, totalSize);
     }
 
     @Override
