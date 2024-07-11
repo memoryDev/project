@@ -47,7 +47,8 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository{
                 .from(board)
                 .where(
                         containsNickname(searchDTO),
-                        containsTitle(searchDTO)
+                        containsTitle(searchDTO),
+                        board.delYn.eq(DeleteStatus.N)
                 )
                 .offset(pageable.getOffset()) //페이지 번호
                 .limit(pageable.getPageSize()) //페이지 사이즈
@@ -57,7 +58,8 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository{
                 .selectFrom(board)
                 .where(
                         containsNickname(searchDTO),
-                        containsTitle(searchDTO)
+                        containsTitle(searchDTO),
+                        board.delYn.eq(DeleteStatus.N)
                 )
                 .fetch()
                 .size();

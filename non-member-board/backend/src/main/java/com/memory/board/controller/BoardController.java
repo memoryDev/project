@@ -46,11 +46,19 @@ public class BoardController {
 
         BoardDTO boardDTO = boardService.boardDetail(boardId);
 
+        if (boardDTO.getId() == null) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
         return new ResponseEntity<>(boardDTO, HttpStatus.OK);
     }
 
     @DeleteMapping("/board/{boardId}")
     public ResponseEntity<String> deleteBoard(@PathVariable("boardId") Long boardId, @RequestBody DeleteBoardDTO boardDTO) {
+
+        System.out.println(boardDTO);
+
+        log.info("deleteBoard start");
 
         if (boardId == null) {
             log.info("deleteBoard boardId is null");
@@ -65,13 +73,13 @@ public class BoardController {
         if (StringUtils.hasText(boardDTO.getPassword()) == false) {
             log.info("deleteBoard password is null");
 
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("비밀번호를 입력해주세요.", HttpStatus.BAD_REQUEST);
         }
 
         Boolean isDelete = boardService.deleteBoard(boardId, boardDTO);
         if (!isDelete) {
             log.info("deleteBoard isDelete = {}", isDelete);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("비밀번호를 확인해주세요.", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         return new ResponseEntity<>(HttpStatus.OK);
