@@ -1,7 +1,7 @@
 import BoardList from "../../components/BoardList";
 import Header from "../../components/Header";
 
-const Board = () => {
+const List = () => {
   return (
     <div>
       <div>
@@ -14,4 +14,4 @@ const Board = () => {
   );
 };
 
-export default Board;
+export default List;

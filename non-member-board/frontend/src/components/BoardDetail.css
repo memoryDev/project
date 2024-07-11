@@ -1,0 +1,51 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.boardDetail_wrapper {
+  padding: 10px;
+}
+.box_line {
+  display: flex;
+  flex-basis: auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  border-bottom: 0;
+}
+.box_line:last-child {
+  border-bottom: 1px solid #000;
+}
+.box_line .box_left h4 {
+  width: 100px;
+  padding: 5px;
+  font-weight: bold;
+  margin: 0;
+  border-right: 1px solid #000;
+}
+.box_line .box_left h4.content_title {
+  height: 300px;
+  line-height: 300px;
+}
+
+.box_line .box_right {
+  width: calc(100% - 100px);
+}
+
+.box_line .box_right p {
+  padding: 5px;
+  margin: 0;
+  height: 100%;
+}
+.box_line .box_right p.content {
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.Button_wrapper {
+  margin: 10px 0;
+  text-align: center;
+}

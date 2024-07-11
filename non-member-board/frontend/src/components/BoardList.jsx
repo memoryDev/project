@@ -5,7 +5,7 @@ import Table from "react-bootstrap/Table";
 import BoardItem from "./BoardItem";
 import Pagination from "./Pagination";
 
-const BoardList = () => {
+const List = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const currentPage = searchParams.get("page") || 0;
@@ -93,4 +93,4 @@ const BoardList = () => {
   );
 };
 
-export default BoardList;
+export default List;
