@@ -2,6 +2,7 @@ package com.memory.board.controller;
 
 import com.memory.board.dto.BoardDTO;
 import com.memory.board.dto.BoardSearchDTO;
+import com.memory.board.dto.DeleteBoardDTO;
 import com.memory.board.entity.Board;
 import com.memory.board.entity.enums.DeleteStatus;
 import com.memory.board.service.BoardService;
@@ -13,6 +14,8 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -44,5 +47,33 @@ public class BoardController {
         BoardDTO boardDTO = boardService.boardDetail(boardId);
 
         return new ResponseEntity<>(boardDTO, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/board/{boardId}")
+    public ResponseEntity<String> deleteBoard(@PathVariable("boardId") Long boardId, @RequestBody DeleteBoardDTO boardDTO) {
+
+        if (boardId == null) {
+            log.info("deleteBoard boardId is null");
+            return new ResponseEntity<>("잘못된 요청입니다", HttpStatus.BAD_REQUEST);
+        }
+
+        if (ObjectUtils.isEmpty(boardDTO)) {
+            log.info("deleteBoard boardDTO is null");
+            return new ResponseEntity<>("잘못된 요청입니다", HttpStatus.BAD_REQUEST);
+        }
+
+        if (StringUtils.hasText(boardDTO.getPassword()) == false) {
+            log.info("deleteBoard password is null");
+
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        Boolean isDelete = boardService.deleteBoard(boardId, boardDTO);
+        if (!isDelete) {
+            log.info("deleteBoard isDelete = {}", isDelete);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
