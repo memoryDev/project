@@ -5,17 +5,21 @@ import axios from "axios";
 import { isNumbericParameter } from "../utils/is-Numberic-Parameter";
 import { getFormatDate } from "../utils/get-format-date";
 import Button from "./Button";
+import ModalPopup from "./ModalPopup";
 
 const BoardDetail = () => {
   const nav = useNavigate();
   const param = useParams();
   const paramId = param["id"];
+  const [popup, setPopup] = useState({
+    isOpen: false,
+    title: "",
+  });
   const [board, setBoard] = useState({
     id: "",
     createdDate: "",
     nickname: "",
     title: "",
-    content: "",
   });
 
   useEffect(() => {
@@ -29,7 +33,6 @@ const BoardDetail = () => {
       .get(`${import.meta.env.VITE_API_URL}/board/${paramId}`)
       .then((response) => {
         const data = response.data;
-        console.log(data);
 
         setBoard({
           ...board,
@@ -39,12 +42,30 @@ const BoardDetail = () => {
           title: data.title,
           content: data.content,
         });
-        console.log(board);
       })
       .catch((error) => {
-        console.error("API 호출 중 오류 발생:", error);
+        if (!error.response) {
+          console.error("API 호출 중 오류 발생:", error);
+        }
+
+        alert("정상적인 접근이 아닙니다.");
+        nav("/board", { replace: true });
       });
   }, [nav, paramId]);
+
+  const popupClose = () => {
+    setPopup({
+      ...popup,
+      isOpen: false,
+    });
+  };
+
+  const onClickButton = (type) => {
+    setPopup({
+      isOpen: true,
+      title: type == "MODIFY" ? "수정하기" : "삭제하기",
+    });
+  };
 
   return (
     <>
@@ -94,10 +115,12 @@ const BoardDetail = () => {
         </div>
       </div>
       <div className="Button_wrapper">
-        <Button url={""} text={"수정하기"} />
-        <Button url={"/board"} text={"목록"} />
-        <Button url={""} text={"삭제하기"} />
+        <Button text={"수정하기"} type={"MODIFY"} onClick={onClickButton} />
+        <Button url={"/board"} text={"목록"} onClick={onClickButton} />
+        <Button text={"삭제하기"} type={"DELETE"} onClick={onClickButton} />
       </div>
+
+      {popup.isOpen ? <ModalPopup popup={popup} onClick={popupClose} /> : ""}
     </>
   );
 };
