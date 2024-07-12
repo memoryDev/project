@@ -21,6 +21,7 @@ const BoardDetail = () => {
     nickname: "",
     title: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     //id값 유효성 체크
@@ -42,6 +43,8 @@ const BoardDetail = () => {
           title: data.title,
           content: data.content,
         });
+
+        setIsLoading(true);
       })
       .catch((error) => {
         if (!error.response) {
@@ -69,51 +72,53 @@ const BoardDetail = () => {
 
   return (
     <>
-      <div className="boardDetail_wrapper">
-        <div className="box_line">
-          <div className="box_left">
-            <h4>번호</h4>
+      {isLoading && (
+        <div className="boardDetail_wrapper">
+          <div className="box_line">
+            <div className="box_left">
+              <h4>번호</h4>
+            </div>
+            <div className="box_right">
+              <p>{board.id}</p>
+            </div>
           </div>
-          <div className="box_right">
-            <p>{board.id}</p>
+          <div className="box_line">
+            <div className="box_left">
+              <h4>작성일</h4>
+            </div>
+            <div className="box_right">
+              <p>{getFormatDate(board.createdDate)}</p>
+            </div>
           </div>
-        </div>
-        <div className="box_line">
-          <div className="box_left">
-            <h4>작성일</h4>
-          </div>
-          <div className="box_right">
-            <p>{getFormatDate(board.createdDate)}</p>
-          </div>
-        </div>
 
-        <div className="box_line">
-          <div className="box_left">
-            <h4>작성자</h4>
+          <div className="box_line">
+            <div className="box_left">
+              <h4>작성자</h4>
+            </div>
+            <div className="box_right">
+              <p>{board.nickname}</p>
+            </div>
           </div>
-          <div className="box_right">
-            <p>{board.nickname}</p>
-          </div>
-        </div>
 
-        <div className="box_line">
-          <div className="box_left">
-            <h4>제목</h4>
+          <div className="box_line">
+            <div className="box_left">
+              <h4>제목</h4>
+            </div>
+            <div className="box_right">
+              <p>{board.title}</p>
+            </div>
           </div>
-          <div className="box_right">
-            <p>{board.title}</p>
-          </div>
-        </div>
 
-        <div className="box_line">
-          <div className="box_left">
-            <h4 className="content_title">내용</h4>
-          </div>
-          <div className="box_right">
-            <p className="content">{board.content}</p>
+          <div className="box_line">
+            <div className="box_left">
+              <h4 className="content_title">내용</h4>
+            </div>
+            <div className="box_right">
+              <p className="content">{board.content}</p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <div className="Button_wrapper">
         <Button text={"수정하기"} type={"MODIFY"} onClick={onClickButton} />
         <Button url={"/board"} text={"목록"} onClick={onClickButton} />
