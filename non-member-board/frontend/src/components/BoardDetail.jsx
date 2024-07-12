@@ -63,10 +63,10 @@ const BoardDetail = () => {
     });
   };
 
-  const onClickButton = (type) => {
+  const onClickButton = () => {
     setPopup({
       isOpen: true,
-      title: type == "MODIFY" ? "수정하기" : "삭제하기",
+      title: "삭제하기",
     });
   };
 
@@ -120,9 +120,8 @@ const BoardDetail = () => {
         </div>
       )}
       <div className="Button_wrapper">
-        <Button text={"수정하기"} type={"MODIFY"} onClick={onClickButton} />
         <Button url={"/board"} text={"목록"} onClick={onClickButton} />
-        <Button text={"삭제하기"} type={"DELETE"} onClick={onClickButton} />
+        <Button text={"삭제하기"} onClick={onClickButton} />
       </div>
 
       {popup.isOpen ? <ModalPopup popup={popup} onClick={popupClose} /> : ""}

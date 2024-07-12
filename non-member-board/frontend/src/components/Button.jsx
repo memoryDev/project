@@ -1,12 +1,12 @@
 import "./Button.css";
 import { useNavigate } from "react-router-dom";
 
-const Button = ({ url, text, type, onClick }) => {
+const Button = ({ url, text, onClick }) => {
   const nav = useNavigate();
 
   const onClickLink = () => {
-    if (type === "MODIFY" || type === "DELETE") {
-      onClick(type);
+    if (!url) {
+      onClick();
     } else {
       nav(url, { replace: true });
     }
