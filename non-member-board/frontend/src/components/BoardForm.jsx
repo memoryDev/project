@@ -59,6 +59,28 @@ const BoardForm = () => {
     if (!inValid) {
       return;
     }
+
+    // 저장 기능
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/board/save`, { ...inputs })
+      .then((response) => {
+        const data = response.data;
+        if (data) {
+          alert("게시글 작성 성공하였습니다.");
+          nav(`/board/${data}`, { replace: true });
+          return;
+        }
+      })
+      .catch((error) => {
+        if (!error.response) {
+          console.error("API 호출 중 오류 발생:", error);
+          return;
+        }
+
+        const message = error.response.data;
+        alert(message);
+        return;
+      });
   };
 
   return (

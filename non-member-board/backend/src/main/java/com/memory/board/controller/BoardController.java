@@ -1,6 +1,7 @@
 package com.memory.board.controller;
 
 import com.memory.board.dto.BoardDTO;
+import com.memory.board.dto.BoardSaveDTO;
 import com.memory.board.dto.BoardSearchDTO;
 import com.memory.board.dto.DeleteBoardDTO;
 import com.memory.board.entity.Board;
@@ -18,6 +19,8 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @Slf4j
 @RequiredArgsConstructor
@@ -29,8 +32,6 @@ public class BoardController {
     @PostMapping("/board")
     public ResponseEntity<Page<BoardDTO>> getBoardList(@RequestBody(required = false) BoardSearchDTO searchDTO,
                                                        @PageableDefault(size = 10) Pageable pageable ) {
-
-        System.out.println(searchDTO);
 
         Page<BoardDTO> dtoList = boardService.selectBoardList(pageable, searchDTO);
 
@@ -84,4 +85,54 @@ public class BoardController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("/board/save")
+    public ResponseEntity<Object> saveBoard(@RequestBody BoardSaveDTO boardSaveDTO) {
+
+        if (boardSaveDTO == null) {
+            log.info("BoardController.saveBoard boardSaveDTO is null");
+            return new ResponseEntity<>("잘못된 요청입니다.", HttpStatus.BAD_REQUEST);
+        }
+
+        // 유효성 체크
+        Boolean isValidation = boardValidationCheck(boardSaveDTO);
+        if (!isValidation) {
+            log.info("BoardController.saveBoard.isValidation = {}", isValidation);
+            return new ResponseEntity<>("잘못된 요청입니다.", HttpStatus.BAD_REQUEST);
+        }
+
+        Long savedId = boardService.saveBoard(boardSaveDTO);
+
+        // 저장된 ID확인
+        if (savedId == null || savedId == 0L) {
+            log.info("BoardController.saveBoard savedId = {}", savedId);
+            return new ResponseEntity<>("저장중 오류가 발생하였습니다.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(savedId, HttpStatus.OK);
+    }
+
+    private Boolean boardValidationCheck (BoardSaveDTO boardSaveDTO) {
+
+        if (!StringUtils.hasText(boardSaveDTO.getNickname())) {
+            return false;
+        }
+
+        if (!StringUtils.hasText(boardSaveDTO.getPassword())) {
+            return false;
+        }
+
+        if (!StringUtils.hasText(boardSaveDTO.getTitle())) {
+            return false;
+        }
+
+        if (!StringUtils.hasText(boardSaveDTO.getContent())) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.memory.board.service;
 
 import com.memory.board.dto.BoardDTO;
+import com.memory.board.dto.BoardSaveDTO;
 import com.memory.board.dto.BoardSearchDTO;
 import com.memory.board.dto.DeleteBoardDTO;
 import com.memory.board.entity.Board;
@@ -49,6 +50,25 @@ public class BoardService {
         // 게시물 삭제처리
         board.setDelYn(DeleteStatus.Y);
         return true;
+    }
 
+    public Long saveBoard(BoardSaveDTO boardSaveDTO) {
+        // 1. dto -> entity
+        Board board = boardSaveDTO.toEntity();
+
+        // entity 변환 실패시
+        if (board == null) {
+            return null;
+        }
+
+        // 2. board save
+        Board savedBoard = boardRepository.save(board);
+
+        // save 실패시
+        if (savedBoard == null) {
+            return null;
+        }
+
+        return savedBoard.getId();
     }
 }
