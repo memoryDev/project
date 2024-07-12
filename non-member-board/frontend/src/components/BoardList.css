@@ -1,0 +1,10 @@
+.wrap {
+  overflow: hidden;
+}
+.createButton {
+  display: block;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  float: right;
+}

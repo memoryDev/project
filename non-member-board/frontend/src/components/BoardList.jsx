@@ -1,11 +1,13 @@
+import "./BoardList.css";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 import BoardItem from "./BoardItem";
 import Pagination from "./Pagination";
 
 const List = () => {
+  const nav = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const currentPage = searchParams.get("page") || 0;
@@ -75,7 +77,7 @@ const List = () => {
           ))}
         </tbody>
       </Table>
-      <div>
+      <div className="wrap">
         <select value={option} onChange={onChangeOption}>
           {keywordList.map(({ value, name }) => {
             <option value={value}>{name}</option>;
@@ -86,6 +88,14 @@ const List = () => {
         </select>
         <input type="text" value={keyword} onChange={onChangeKeyWord} />
         <button onClick={onClickSubmit}>검색</button>
+        <button
+          className="createButton"
+          onClick={() => {
+            nav("/board/write");
+          }}
+        >
+          글작성
+        </button>
       </div>
 
       <Pagination {...page} />
