@@ -6,6 +6,7 @@ import com.memory.board.entity.Board;
 import com.memory.board.entity.QBoard;
 import com.memory.board.entity.enums.DeleteStatus;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -52,6 +53,7 @@ public class BoardCustomRepositoryImpl implements BoardCustomRepository{
                 )
                 .offset(pageable.getOffset()) //페이지 번호
                 .limit(pageable.getPageSize()) //페이지 사이즈
+                .orderBy(board.id.desc())
                 .fetch();
 
         int totalSize = queryFactory
